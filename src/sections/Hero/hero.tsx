@@ -2,12 +2,16 @@ import Container from "../../components/ui/Container";
 import HeroContent from "./HeroContent";
 import HeroImageSlider from "./HeroImageSlider";
 
-export default function Hero() {
+
+export default function Hero(){
+
   return (
+
     <section
       id="home"
       className="
         relative
+        w-full
         overflow-hidden
         bg-gradient-to-b
         from-white
@@ -33,12 +37,14 @@ export default function Hero() {
         "
       />
 
+
       <Container>
 
         <div
           className="
             relative
             flex
+            w-full
             flex-col
             gap-10
             lg:grid
@@ -56,6 +62,8 @@ export default function Hero() {
 
       </Container>
 
+
     </section>
+
   );
 }
