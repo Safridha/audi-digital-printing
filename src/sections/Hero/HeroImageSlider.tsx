@@ -11,7 +11,6 @@ import {
   EffectFade
 } from "swiper/modules";
 
-
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
@@ -21,16 +20,15 @@ import heroImage from "../../assets/images/hero/hero-tampilan.png";
 import promo17 from "../../assets/images/hero/17-an.png";
 
 
-
 export default function HeroImageSlider(){
 
-  const images=[
+  const images = [
     heroImage,
     promo17
   ];
 
 
-  const [zoom,setZoom]=useState(false);
+  const [zoom,setZoom] = useState(false);
 
 
 
@@ -41,9 +39,9 @@ export default function HeroImageSlider(){
         flex
         w-full
         justify-center
+        overflow-hidden
       "
     >
-
 
       <Swiper
 
@@ -83,12 +81,13 @@ export default function HeroImageSlider(){
 
               <div
                 className="
+                  w-full
                   overflow-hidden
-                  rounded-3xl
-                  bg-white
-                  shadow-lg
+                  rounded-[28px]
+                  bg-transparent
                 "
               >
+
 
                 <img
 
@@ -101,9 +100,10 @@ export default function HeroImageSlider(){
                   className={`
                     block
                     w-full
-                    max-h-[350px]
-                    object-contain
-                    rounded-3xl
+                    max-w-full
+                    h-auto
+                    rounded-[28px]
+                    object-cover
                     transition
                     duration-500
 
