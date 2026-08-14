@@ -19,33 +19,45 @@ export default function Hero() {
       "
     >
 
-      <div className="
-        pointer-events-none
-        absolute
-        -right-40
-        top-20
-        h-80
-        w-80
-        rounded-full
-        bg-blue-400/20
-        blur-3xl
-      "/>
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -right-40
+          top-20
+          h-80
+          w-80
+          rounded-full
+          bg-blue-400/20
+          blur-3xl
+        "
+      />
+
 
       <Container>
-        <div className="
-          relative
-          grid
-          items-center
-          gap-10
-          lg:grid-cols-2
-          lg:gap-16
-        ">
+
+        <div
+          className="
+            relative
+            grid
+            items-center
+            gap-10
+            rounded-3xl
+            bg-white
+            p-6
+            shadow-xl
+            sm:p-10
+            lg:grid-cols-2
+            lg:gap-16
+          "
+        >
 
           <HeroContent />
 
           <HeroImageSlider />
 
         </div>
+
       </Container>
 
     </section>

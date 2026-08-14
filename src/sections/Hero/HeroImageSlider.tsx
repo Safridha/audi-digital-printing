@@ -1,5 +1,3 @@
-import {useState} from "react";
-
 import {
   Swiper,
   SwiperSlide
@@ -10,6 +8,7 @@ import {
   Pagination,
   EffectFade
 } from "swiper/modules";
+
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -22,80 +21,108 @@ import promo17 from "../../assets/images/hero/17-an.png";
 
 export default function HeroImageSlider(){
 
+
   const images=[
     heroImage,
     promo17
   ];
 
-  const [zoom,setZoom]=useState(false);
 
 
   return(
-    <div className="
-      flex
-      justify-center
-      w-full
-    ">
+
+    <div
+      className="
+        flex
+        w-full
+        justify-center
+      "
+    >
+
 
       <Swiper
+
         modules={[
           Autoplay,
           Pagination,
           EffectFade
         ]}
+
+
         autoplay={{
           delay:4000,
           disableOnInteraction:false
         }}
+
+
         pagination={{
           clickable:true
         }}
+
+
         effect="fade"
+
         loop
+
+
         className="
           w-full
           max-w-xl
         "
+
       >
+
 
         {
           images.map((img,i)=>(
 
+
             <SwiperSlide key={i}>
 
-              <div className="
-                overflow-hidden
-                rounded-3xl
-                bg-white
-                shadow-lg
-              ">
+
+              <div
+                className="
+                  overflow-hidden
+                  rounded-3xl
+                  bg-white
+                  shadow-lg
+                "
+              >
+
 
                 <img
+
                   src={img}
+
                   alt="2Audi Digital Printing"
-                  onClick={()=>setZoom(!zoom)}
-                  className={`
+
+                  className="
+                    h-auto
+                    max-h-[420px]
                     w-full
                     object-contain
-                    transition
-                    duration-500
-                    ${
-                      zoom
-                      ?"scale-105"
-                      :""
-                    }
-                  `}
+
+                    sm:max-h-[450px]
+                  "
+
                 />
+
 
               </div>
 
+
             </SwiperSlide>
+
 
           ))
         }
 
+
       </Swiper>
 
+
     </div>
+
   );
+
 }

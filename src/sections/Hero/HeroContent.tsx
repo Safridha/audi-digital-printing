@@ -4,10 +4,12 @@ import Button from "../../components/ui/Button";
 export default function HeroContent() {
 
   return (
+
     <motion.div
       initial={{opacity:0,y:20}}
       animate={{opacity:1,y:0}}
       transition={{duration:.6}}
+
       className="
         max-w-xl
         text-center
@@ -15,48 +17,72 @@ export default function HeroContent() {
       "
     >
 
-      <h1 className="
-        text-4xl
-        font-extrabold
-        leading-tight
-        text-slate-900
-        sm:text-5xl
-        lg:text-6xl
-      ">
+
+      <h1
+        className="
+          text-3xl
+          font-extrabold
+          leading-tight
+          text-slate-900
+
+          sm:text-5xl
+          lg:text-6xl
+        "
+      >
+
         Solusi Digital Printing
+
         <br/>
+
         Untuk Kebutuhan
+
         <br/>
+
         <span className="text-blue-600">
           Bisnis Anda
         </span>
+
       </h1>
 
 
-      <p className="
-        mx-auto
-        mt-5
-        max-w-lg
-        text-base
-        leading-7
-        text-slate-600
-        lg:mx-0
-      ">
+
+      <p
+        className="
+          mx-auto
+          mt-5
+          max-w-lg
+          text-sm
+          leading-7
+          text-slate-600
+
+          sm:text-base
+
+          lg:mx-0
+        "
+      >
+
         Melayani kebutuhan digital printing seperti banner,
         spanduk, MMT, X-Banner, umbul-umbul, dan berbagai
         media promosi dengan hasil berkualitas.
+
       </p>
 
 
-      <div className="
-        mt-7
-        flex
-        flex-col
-        gap-3
-        sm:flex-row
-        lg:justify-start
-        justify-center
-      ">
+
+      <div
+        className="
+          mt-7
+          flex
+          flex-col
+          gap-3
+
+          sm:flex-row
+          sm:justify-center
+
+          lg:justify-start
+        "
+      >
+
 
         <Button
           href="https://wa.me/6282241823895"
@@ -66,6 +92,7 @@ export default function HeroContent() {
         </Button>
 
 
+
         <Button
           variant="outline"
           href="#services"
@@ -73,24 +100,46 @@ export default function HeroContent() {
           Lihat Produk
         </Button>
 
+
       </div>
 
 
-      <div className="
-        mt-8
-        flex
-        flex-wrap
-        justify-center
-        gap-5
-        text-sm
-        text-slate-600
-        lg:justify-start
-      ">
-        <span>✓ Kualitas Terjamin</span>
-        <span>⚡ Proses Cepat</span>
-        <span>🎨 Bisa Custom</span>
+
+
+      <div
+        className="
+          mt-8
+          flex
+          flex-wrap
+          justify-center
+          gap-4
+
+          text-sm
+          text-slate-600
+
+          lg:justify-start
+        "
+      >
+
+        <span>
+          ✓ Kualitas Terjamin
+        </span>
+
+
+        <span>
+          ⚡ Proses Cepat
+        </span>
+
+
+        <span>
+          🎨 Bisa Custom
+        </span>
+
+
       </div>
+
 
     </motion.div>
+
   );
 }
