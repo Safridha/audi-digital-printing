@@ -24,15 +24,16 @@ export default function HeroContent() {
       className="
         w-full
         max-w-xl
+        overflow-hidden
         text-center
         lg:text-left
       "
 
     >
 
-
       <h1
         className="
+          break-words
           text-3xl
           font-extrabold
           leading-tight
@@ -44,11 +45,11 @@ export default function HeroContent() {
 
         Solusi Digital Printing
 
-        <br/>
+        <br />
 
         Untuk Kebutuhan
 
-        <br/>
+        <br />
 
         <span className="text-blue-600">
           Bisnis Anda
@@ -80,15 +81,15 @@ export default function HeroContent() {
 
 
 
+      {/* BUTTON */}
+
       <div
         className="
           mt-7
           flex
-          w-full
-          flex-col
+          flex-row
+          justify-center
           gap-3
-          sm:flex-row
-          sm:justify-center
           lg:justify-start
         "
       >
@@ -99,7 +100,6 @@ export default function HeroContent() {
         >
           Pesan via WhatsApp
         </Button>
-
 
 
         <Button
@@ -115,6 +115,8 @@ export default function HeroContent() {
 
 
 
+      {/* TRUST */}
+
       <div
         className="
           mt-8
@@ -129,24 +131,8 @@ export default function HeroContent() {
           lg:justify-start
         "
       >
-
-        <span>
-          ✓ Kualitas Terjamin
-        </span>
-
-
-        <span>
-          ⚡ Proses Cepat
-        </span>
-
-
-        <span>
-          🎨 Bisa Custom
-        </span>
-
-
+        
       </div>
-
 
 
     </motion.div>

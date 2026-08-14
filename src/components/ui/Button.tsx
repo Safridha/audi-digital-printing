@@ -22,18 +22,19 @@ export default function Button({
 
 
   const className = `
-    flex
-    w-full
-    sm:w-auto
+    inline-flex
     items-center
     justify-center
+    whitespace-nowrap
     rounded-xl
-    px-6
+    px-4
     py-3
     text-sm
     font-semibold
     transition
     duration-300
+    sm:px-6
+    sm:text-base
     ${styles[variant]}
   `;
 
