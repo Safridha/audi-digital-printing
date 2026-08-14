@@ -2,16 +2,21 @@ import { motion } from "framer-motion";
 import Button from "../../components/ui/Button";
 
 export default function HeroContent() {
+
   return (
     <motion.div
-      initial={{opacity:0,y:30}}
+      initial={{opacity:0,y:20}}
       animate={{opacity:1,y:0}}
-      transition={{duration:.7}}
-      className="max-w-xl lg:-translate-y-6"
+      transition={{duration:.6}}
+      className="
+        max-w-xl
+        text-center
+        lg:text-left
+      "
     >
 
       <h1 className="
-        text-3xl
+        text-4xl
         font-extrabold
         leading-tight
         text-slate-900
@@ -29,13 +34,13 @@ export default function HeroContent() {
 
 
       <p className="
+        mx-auto
         mt-5
         max-w-lg
-        text-sm
-        leading-6
+        text-base
+        leading-7
         text-slate-600
-        sm:text-lg
-        sm:leading-7
+        lg:mx-0
       ">
         Melayani kebutuhan digital printing seperti banner,
         spanduk, MMT, X-Banner, umbul-umbul, dan berbagai
@@ -49,7 +54,10 @@ export default function HeroContent() {
         flex-col
         gap-3
         sm:flex-row
+        lg:justify-start
+        justify-center
       ">
+
         <Button
           href="https://wa.me/6282241823895"
           target="_blank"
@@ -57,23 +65,26 @@ export default function HeroContent() {
           Pesan via WhatsApp
         </Button>
 
+
         <Button
           variant="outline"
           href="#services"
         >
           Lihat Produk
         </Button>
+
       </div>
 
 
       <div className="
-        mt-7
-        grid
-        gap-2
+        mt-8
+        flex
+        flex-wrap
+        justify-center
+        gap-5
         text-sm
-        font-medium
         text-slate-600
-        sm:grid-cols-3
+        lg:justify-start
       ">
         <span>✓ Kualitas Terjamin</span>
         <span>⚡ Proses Cepat</span>
