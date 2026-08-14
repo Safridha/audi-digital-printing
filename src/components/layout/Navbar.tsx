@@ -2,109 +2,52 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo/logo-2audi.png";
 
-
 export default function Navbar() {
-
   const navigate = useNavigate();
   const location = useLocation();
-
   const [openMenu, setOpenMenu] = useState(false);
 
-
-
-  useEffect(() => {
-
-    if(location.hash){
-
-      const id = location.hash.replace("#","");
-
-      setTimeout(()=>{
-
-        const element = document.getElementById(id);
-
-        if(element){
-
-          element.scrollIntoView({
-            behavior:"smooth",
-            block:"start",
-          });
-
-        }
-
-      },100);
-
-    }
-
-  },[location]);
-
-
-
-
-
-  const handleNavigation = (section:string)=>{
-
-    setOpenMenu(false);
-
-
-    if(location.pathname !== "/"){
-
-      navigate(`/#${section}`);
-      return;
-
-    }
-
-
-    const element = document.getElementById(section);
-
-
-    if(element){
-
-      element.scrollIntoView({
-        behavior:"smooth",
-        block:"start",
-      });
-
-    }
-
-  };
-
-
-
-
-
   const menu = [
-    {
-      name:"Home",
-      id:"home",
-    },
-    {
-      name:"Layanan",
-      id:"services",
-    },
-    {
-      name:"Keunggulan",
-      id:"advantages",
-    },
-    {
-      name:"Portfolio",
-      id:"portfolio",
-    },
-    {
-      name:"Cara Order",
-      id:"order",
-    },
-    {
-      name:"Kontak",
-      id:"contact",
-    },
+    ["Home", "home"],
+    ["Layanan", "services"],
+    ["Keunggulan", "advantages"],
+    ["Portfolio", "portfolio"],
+    ["Cara Order", "order"],
+    ["Kontak", "contact"],
   ];
 
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
 
+      setTimeout(() => {
+        document
+          .getElementById(id)
+          ?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+      }, 100);
+    }
+  }, [location]);
 
+  const handleNavigation = (section: string) => {
+    setOpenMenu(false);
 
+    if (location.pathname !== "/") {
+      navigate(`/#${section}`);
+      return;
+    }
+
+    document
+      .getElementById(section)
+      ?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+  };
 
   return (
-
     <header
       className="
         sticky
@@ -116,8 +59,6 @@ export default function Navbar() {
         backdrop-blur-xl
       "
     >
-
-
       <div
         className="
           mx-auto
@@ -126,45 +67,36 @@ export default function Navbar() {
           max-w-7xl
           items-center
           justify-between
-          px-6
-          md:h-24
+          px-5
+          sm:px-6
         "
       >
 
-
-
-
-
         {/* LOGO */}
-
         <button
-          onClick={()=>navigate("/")}
+          onClick={() => navigate("/")}
           className="
             flex
+            h-12
+            w-32
             items-center
+            overflow-hidden
           "
         >
-
           <img
             src={logo}
             alt="2Audi Digital Printing"
             className="
-              h-12
+              h-20
               w-auto
+              max-w-none
               object-contain
-              md:h-16
             "
           />
-
         </button>
 
 
-
-
-
-
         {/* DESKTOP MENU */}
-
         <nav
           className="
             hidden
@@ -173,15 +105,11 @@ export default function Navbar() {
             md:flex
           "
         >
-
-          {menu.map((item)=>(
-
+          {menu.map(([name, id]) => (
             <button
-              key={item.id}
-              onClick={()=>handleNavigation(item.id)}
+              key={id}
+              onClick={() => handleNavigation(id)}
               className="
-                group
-                relative
                 whitespace-nowrap
                 text-sm
                 font-medium
@@ -191,41 +119,15 @@ export default function Navbar() {
                 lg:text-base
               "
             >
-
-              {item.name}
-
-
-              <span
-                className="
-                  absolute
-                  -bottom-2
-                  left-0
-                  h-0.5
-                  w-0
-                  bg-blue-600
-                  transition-all
-                  duration-300
-                  group-hover:w-full
-                "
-              />
-
+              {name}
             </button>
-
           ))}
-
-
         </nav>
 
 
-
-
-
-
-
         {/* MOBILE BUTTON */}
-
         <button
-          onClick={()=>setOpenMenu(!openMenu)}
+          onClick={() => setOpenMenu(!openMenu)}
           className="
             flex
             h-10
@@ -240,24 +142,13 @@ export default function Navbar() {
             md:hidden
           "
         >
-
           {openMenu ? "✕" : "☰"}
-
         </button>
-
-
 
       </div>
 
 
-
-
-
-
-
-
       {/* MOBILE MENU */}
-
       <div
         className={`
           overflow-hidden
@@ -269,27 +160,24 @@ export default function Navbar() {
           md:hidden
           ${
             openMenu
-            ? "max-h-96 opacity-100"
-            : "max-h-0 opacity-0"
+              ? "max-h-96 opacity-100"
+              : "max-h-0 opacity-0"
           }
         `}
       >
-
         <nav
           className="
             flex
             flex-col
             gap-2
-            px-6
-            py-5
+            px-5
+            py-4
           "
         >
-
-          {menu.map((item)=>(
-
+          {menu.map(([name, id]) => (
             <button
-              key={item.id}
-              onClick={()=>handleNavigation(item.id)}
+              key={id}
+              onClick={() => handleNavigation(id)}
               className="
                 rounded-lg
                 px-4
@@ -303,23 +191,12 @@ export default function Navbar() {
                 hover:text-blue-600
               "
             >
-
-              {item.name}
-
+              {name}
             </button>
-
           ))}
-
-
         </nav>
-
-
       </div>
 
-
-
     </header>
-
   );
-
 }
