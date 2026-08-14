@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
   Swiper,
   SwiperSlide
@@ -19,8 +21,8 @@ import heroImage from "../../assets/images/hero/hero-tampilan.png";
 import promo17 from "../../assets/images/hero/17-an.png";
 
 
-export default function HeroImageSlider(){
 
+export default function HeroImageSlider(){
 
   const images=[
     heroImage,
@@ -28,8 +30,11 @@ export default function HeroImageSlider(){
   ];
 
 
+  const [zoom,setZoom]=useState(false);
 
-  return(
+
+
+  return (
 
     <div
       className="
@@ -48,36 +53,32 @@ export default function HeroImageSlider(){
           EffectFade
         ]}
 
-
         autoplay={{
           delay:4000,
           disableOnInteraction:false
         }}
 
-
         pagination={{
           clickable:true
         }}
-
 
         effect="fade"
 
         loop
 
-
         className="
           w-full
-          max-w-xl
+          max-w-md
+          sm:max-w-xl
         "
 
       >
 
 
         {
-          images.map((img,i)=>(
+          images.map((img,index)=>(
 
-
-            <SwiperSlide key={i}>
+            <SwiperSlide key={index}>
 
 
               <div
@@ -89,21 +90,29 @@ export default function HeroImageSlider(){
                 "
               >
 
-
                 <img
 
                   src={img}
 
                   alt="2Audi Digital Printing"
 
-                  className="
-                    h-auto
-                    max-h-[420px]
-                    w-full
-                    object-contain
+                  onClick={()=>setZoom(!zoom)}
 
-                    sm:max-h-[450px]
-                  "
+                  className={`
+                    block
+                    w-full
+                    max-h-[350px]
+                    object-contain
+                    rounded-3xl
+                    transition
+                    duration-500
+
+                    ${
+                      zoom
+                      ? "scale-105"
+                      : ""
+                    }
+                  `}
 
                 />
 
@@ -112,7 +121,6 @@ export default function HeroImageSlider(){
 
 
             </SwiperSlide>
-
 
           ))
         }

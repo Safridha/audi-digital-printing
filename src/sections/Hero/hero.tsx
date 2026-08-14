@@ -33,21 +33,17 @@ export default function Hero() {
         "
       />
 
-
       <Container>
 
         <div
           className="
             relative
-            grid
-            items-center
+            flex
+            flex-col
             gap-10
-            rounded-3xl
-            bg-white
-            p-6
-            shadow-xl
-            sm:p-10
+            lg:grid
             lg:grid-cols-2
+            lg:items-center
             lg:gap-16
           "
         >
