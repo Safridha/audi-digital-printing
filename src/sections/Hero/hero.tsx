@@ -17,9 +17,12 @@ export default function Hero(){
         from-white
         via-blue-50/50
         to-white
-        py-10
-        sm:py-14
-        lg:py-20
+        pt-28
+        pb-10
+        sm:pt-32
+        sm:pb-14
+        lg:pt-36
+        lg:pb-20
       "
     >
 

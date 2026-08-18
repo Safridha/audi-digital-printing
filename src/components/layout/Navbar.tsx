@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo/logo-2audi.png";
+import { products } from "../../data/products";
 
-export default function Navbar() {
+
+export default function Navbar(){
 
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [openMenu, setOpenMenu] = useState(false);
+  const [openMenu,setOpenMenu] = useState(false);
+  const [search,setSearch] = useState("");
 
 
-  const menu = [
+  const menu=[
     ["Home","home"],
     ["Layanan","services"],
     ["Keunggulan","advantages"],
@@ -20,7 +23,17 @@ export default function Navbar() {
   ];
 
 
-  useEffect(() => {
+  const result = products
+    .filter(item =>
+      item.title
+        .toLowerCase()
+        .includes(search.toLowerCase())
+    )
+    .slice(0,5);
+
+
+
+  useEffect(()=>{
 
     if(location.hash){
 
@@ -33,7 +46,7 @@ export default function Navbar() {
             block:"start"
           });
 
-      },100);
+      },150);
 
     }
 
@@ -41,7 +54,8 @@ export default function Navbar() {
 
 
 
-  const handleNavigation = (id:string)=>{
+
+  const goTo=(id:string)=>{
 
     setOpenMenu(false);
 
@@ -49,6 +63,7 @@ export default function Navbar() {
       navigate(`/#${id}`);
       return;
     }
+
 
     document
       .getElementById(id)
@@ -61,47 +76,48 @@ export default function Navbar() {
 
 
 
-  return (
+  return(
 
 <header
 className="
-sticky
+fixed
 top-0
-z-50
+left-0
+z-[999]
 h-20
-border-b
-border-slate-200/50
-bg-white/90
+w-full
+bg-white/95
 backdrop-blur-xl
+border-b
+border-slate-200/70
+shadow-sm
 "
 >
 
-
-{/* DESKTOP */}
 
 <div
 className="
-hidden
-md:flex
+relative
 mx-auto
+flex
 h-full
 max-w-7xl
 items-center
-justify-between
-px-6
+px-5
+sm:px-6
 "
 >
 
 
-{/* LOGO DESKTOP */}
+
+{/* LOGO */}
 
 <button
 onClick={()=>navigate("/")}
 className="
-h-12
-w-32
-overflow-hidden
 flex
+h-14
+w-28
 items-center
 "
 >
@@ -110,8 +126,8 @@ items-center
 src={logo}
 alt="2Audi Digital Printing"
 className="
-w-full
 h-full
+w-full
 object-contain
 "
 />
@@ -120,13 +136,111 @@ object-contain
 
 
 
-{/* MENU */}
+
+
+{/* SEARCH CENTER */}
+
+<div
+className="
+absolute
+left-1/2
+hidden
+-translate-x-1/2
+md:block
+"
+>
+
+<input
+value={search}
+onChange={(e)=>setSearch(e.target.value)}
+placeholder="Cari produk..."
+className="
+w-56
+rounded-xl
+border
+border-slate-200
+px-4
+py-2
+text-sm
+outline-none
+transition
+focus:border-blue-600
+"
+/>
+
+
+
+{
+search && result.length > 0 && (
+
+<div
+className="
+absolute
+top-12
+left-0
+w-56
+rounded-xl
+border
+border-slate-100
+bg-white
+p-2
+shadow-xl
+"
+>
+
+{
+result.map(item=>(
+
+<button
+key={item.slug}
+onClick={()=>{
+
+navigate(`/produk/${item.slug}`);
+setSearch("");
+
+}}
+className="
+block
+w-full
+rounded-lg
+px-3
+py-2
+text-left
+text-sm
+hover:bg-blue-50
+"
+>
+
+{item.title}
+
+</button>
+
+))
+}
+
+</div>
+
+)
+}
+
+
+</div>
+
+
+
+
+
+
+
+{/* DESKTOP MENU */}
 
 <nav
 className="
-flex
+ml-auto
+hidden
 items-center
-gap-8
+gap-7
+md:flex
 "
 >
 
@@ -135,14 +249,13 @@ menu.map(([name,id])=>(
 
 <button
 key={id}
-onClick={()=>handleNavigation(id)}
+onClick={()=>goTo(id)}
 className="
 text-sm
 font-medium
 text-slate-700
 transition
 hover:text-blue-600
-lg:text-base
 "
 >
 
@@ -156,65 +269,27 @@ lg:text-base
 </nav>
 
 
-</div>
 
 
 
 
-
-{/* MOBILE */}
-
-<div
-className="
-flex
-md:hidden
-h-full
-items-center
-justify-between
-px-5
-"
->
-
-
-{/* LOGO MOBILE */}
-
-<button
-onClick={()=>navigate("/")}
-className="
-h-10
-w-24
-overflow-hidden
-flex
-items-center
-"
->
-
-<img
-src={logo}
-alt="2Audi Digital Printing"
-className="
-w-full
-h-full
-object-contain
-"
-/>
-
-</button>
-
-
-
-{/* MENU BUTTON */}
+{/* MOBILE BUTTON */}
 
 <button
 onClick={()=>setOpenMenu(!openMenu)}
 className="
+ml-auto
+flex
 h-10
 w-10
-rounded-lg
+items-center
+justify-center
+rounded-xl
 border
 border-slate-200
 text-xl
 text-slate-700
+md:hidden
 "
 >
 
@@ -235,21 +310,26 @@ openMenu
 
 
 
+
 {/* MOBILE MENU */}
 
 <div
 className={`
-md:hidden
+absolute
+top-20
+left-0
+w-full
 overflow-hidden
 bg-white
-border-t
+border-b
 transition-all
 duration-300
+md:hidden
 
 ${
 openMenu
 ?
-"max-h-96"
+"max-h-[600px]"
 :
 "max-h-0"
 }
@@ -258,32 +338,83 @@ openMenu
 >
 
 
-<nav
+<div
 className="
-flex
-flex-col
-gap-2
 px-5
 py-5
 "
 >
+
+
+<input
+value={search}
+onChange={(e)=>setSearch(e.target.value)}
+placeholder="Cari produk..."
+className="
+mb-4
+w-full
+rounded-xl
+border
+border-slate-200
+px-4
+py-3
+text-sm
+"
+/>
+
+
+
+{
+search && result.map(item=>(
+
+<button
+key={item.slug}
+onClick={()=>{
+
+navigate(`/produk/${item.slug}`);
+setSearch("");
+setOpenMenu(false);
+
+}}
+className="
+block
+w-full
+rounded-lg
+px-3
+py-2
+text-left
+text-sm
+hover:bg-blue-50
+"
+>
+
+{item.title}
+
+</button>
+
+))
+}
+
+
+
 
 {
 menu.map(([name,id])=>(
 
 <button
 key={id}
-onClick={()=>handleNavigation(id)}
+onClick={()=>goTo(id)}
 className="
-rounded-lg
+mb-1
+block
+w-full
+rounded-xl
 px-4
 py-3
 text-left
 text-sm
 text-slate-700
-transition
 hover:bg-blue-50
-hover:text-blue-600
 "
 >
 
@@ -294,7 +425,9 @@ hover:text-blue-600
 ))
 }
 
-</nav>
+
+
+</div>
 
 
 </div>

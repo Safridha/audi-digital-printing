@@ -4,23 +4,18 @@ import Button from "../../components/ui/Button";
 export default function HeroContent() {
 
   return (
-
     <motion.div
-
       initial={{
-        opacity:0,
-        y:20
+        opacity: 0,
+        y: 20
       }}
-
       animate={{
-        opacity:1,
-        y:0
+        opacity: 1,
+        y: 0
       }}
-
       transition={{
-        duration:.6
+        duration: .6
       }}
-
       className="
         w-full
         max-w-xl
@@ -28,7 +23,6 @@ export default function HeroContent() {
         text-center
         lg:text-left
       "
-
     >
 
       <h1
@@ -38,54 +32,42 @@ export default function HeroContent() {
           font-extrabold
           leading-tight
           text-slate-900
-          sm:text-5xl
-          lg:text-6xl
+          sm:text-4xl
+          lg:text-5xl
         "
       >
-
         Solusi Digital Printing
-
         <br />
-
         Untuk Kebutuhan
-
         <br />
-
         <span className="text-blue-600">
           Bisnis Anda
         </span>
-
       </h1>
-
 
 
       <p
         className="
           mx-auto
-          mt-5
-          max-w-lg
+          mt-4
+          max-w-md
           text-sm
-          leading-7
+          leading-6
           text-slate-600
           sm:text-base
           lg:mx-0
         "
       >
-
         Melayani kebutuhan digital printing seperti banner,
         spanduk, MMT, X-Banner, umbul-umbul, dan berbagai
         media promosi dengan hasil berkualitas.
-
       </p>
 
 
 
-
-      {/* BUTTON */}
-
       <div
         className="
-          mt-7
+          mt-6
           flex
           flex-row
           justify-center
@@ -109,33 +91,9 @@ export default function HeroContent() {
           Lihat Produk
         </Button>
 
-
-      </div>
-
-
-
-
-      {/* TRUST */}
-
-      <div
-        className="
-          mt-8
-          flex
-          flex-col
-          items-center
-          gap-4
-          text-sm
-          text-slate-600
-          sm:flex-row
-          sm:justify-center
-          lg:justify-start
-        "
-      >
-        
       </div>
 
 
     </motion.div>
-
   );
 }
