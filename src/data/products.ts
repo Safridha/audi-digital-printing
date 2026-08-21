@@ -2,7 +2,9 @@ import umbulUmbul from "../assets/images/services/umbul-umbul.png";
 import bendera from "../assets/images/services/bendera.png";
 import spanduk from "../assets/images/services/spanduk.png";
 import mmt from "../assets/images/services/mmt.png";
+import mmtOutdoor from "../assets/images/services/mmt-outdoor.png";
 import xbanner from "../assets/images/services/xbanner.png";
+import rollBanner from "../assets/images/services/roll-banner.png";
 import stiker from "../assets/images/services/stiker.png";
 import lanyard from "../assets/images/services/lanyard.png";
 import idCard from "../assets/images/services/id-card.png";
@@ -22,15 +24,18 @@ export const products = [
     },
 
     specifications: [
-      "Ukuran L90 cm - L200 cm",
-      "Bisa custom ukuran",
-      "Bisa jahit tambahan mulai Rp500/meter",
+      "Ukuran lebar kain 90cm,120cm,150cm,200cm",
+      "Ukuran desain bisa custum menyesuaikan lebar kain",
+      "biaya jahit include tali Rp. 500/m keliling",
+      "desain sudah jadi siap cetak berbentuk jpg/cdr",
     ],
 
     benefits: [
-      "Warna cetak tajam",
-      "Bahan kuat untuk outdoor",
-      "Bisa custom desain",
+      "Hasil cetak warna tajam",
+      "Bahan kuat dan berkualitas",
+      "Warna tahan lama (standart)",
+      "bisa dibantu desain",
+      "bisa kirim ke mana saja.(ongkir)",
     ],
   },
 
@@ -49,15 +54,18 @@ export const products = [
     },
 
     specifications: [
-      "Ukuran L90 cm - L200 cm",
-      "Bisa custom ukuran",
-      "Bisa jahit tambahan mulai Rp500/meter",
+      "Ukuran lebar kain 90cm,120cm,150cm,200cm",
+      "Ukuran desain bisa custum menyesuaikan lebar kain",
+      "biaya jahit include tali Rp. 500/m keliling",
+      "desain sudah jadi siap cetak berbentuk jpg/cdr",
     ],
 
     benefits: [
-      "Warna cetak tajam",
-      "Bahan kuat untuk outdoor",
-      "Bisa custom desain",
+      "Hasil cetak warna tajam",
+      "Bahan kuat dan berkualitas",
+      "Warna tahan lama (standart)",
+      "bisa dibantu desain",
+      "bisa kirim ke mana saja.(ongkir)",
     ],
   },
 
@@ -76,15 +84,18 @@ export const products = [
     },
 
     specifications: [
-      "Ukuran L90 cm - L200 cm",
-      "Bisa custom ukuran",
-      "Bisa jahit tambahan mulai Rp500/meter",
+      "Ukuran lebar kain 90cm,120cm,150cm,200cm",
+      "Ukuran desain bisa custum menyesuaikan lebar kain",
+      "biaya jahit include tali Rp. 500/m keliling",
+      "desain sudah jadi siap cetak berbentuk jpg/cdr",
     ],
 
     benefits: [
-      "Warna cetak tajam",
-      "Bahan kuat untuk outdoor",
-      "Bisa custom desain",
+      "Hasil cetak warna tajam",
+      "Bahan kuat dan berkualitas",
+      "Warna tahan lama (standart)",
+      "bisa dibantu desain",
+      "bisa kirim ke mana saja.(ongkir)",
     ],
   },
 
@@ -103,16 +114,17 @@ export const products = [
     },
 
     specifications: [
-      "Ukuran custom sesuai kebutuhan",
-      "Bahan Flexi / MMT",
-      "Cocok untuk kebutuhan indoor",
-      "Custom desain sesuai permintaan",
+      "Bahan flexi/vynil berkualitas",
+      "jenis bahan 280 grm lebar 1m dan 1,5m",
+      "Ukuran custum",
+      "termasuk biaya seaming dan keling pojok",
+      "tidak termasuk biaya kirim",
     ],
 
     benefits: [
-      "Detail cetak tajam",
-      "Warna lebih hidup",
-      "Cocok untuk promosi indoor",
+      "hasil cetak warna tajam",
+      "tahan lama, tidak mudah pudar",
+      "cocok untuk kebutuhan indoor",
     ],
   },
 
@@ -122,7 +134,7 @@ export const products = [
     badge: "Custom Print",
     title: "Cetak Flexi / MMT Outdoor",
     price: "Mulai Rp16.000/meter",
-    image: mmt,
+    image: mmtOutdoor,
 
     detail: {
       ukuran: "Custom sesuai kebutuhan",
@@ -131,13 +143,18 @@ export const products = [
     },
 
     specifications: [
-      "Ukuran custom sesuai kebutuhan",
-      "Pilihan gramasi 280gr, 340gr, 440gr",
-      "Tahan untuk penggunaan outdoor",
-      "Custom desain sesuai kebutuhan",
+      "Bahan flexi/vynil berkualitas",
+      "Pilihan gramasi 280grm,340grm, 440grm",
+      "Termasuk biaya seaming dan keling pojok",
+      "Tidak termasuk biaya kirim",
+      "Terima desain siap cetak jpg/cdr",
     ],
 
-    benefits: ["Tidak mudah pudar", "Bahan kuat", "Cocok untuk outdoor"],
+    benefits: [
+      "hasil cetak warna tajam",
+      "tahan lama, tidak mudah pudar",
+      "cocok untuk kebutuhan outdoor",
+    ],
   },
 
   {
@@ -155,13 +172,50 @@ export const products = [
     },
 
     specifications: [
-      "Ukuran 60 x 160 cm",
-      "Menggunakan rangka X-Banner",
-      "Desain jadi siap cetak",
-      "Tambahan harga untuk desain custom",
+      "Visual banner bahan vynil 280 grm",
+      "Rangka X banner allumunium",
+      "Dicetak di mesin indoor",
+      "Terima desain siap cetak jpg/cdr",
+      "Tambahan biaya untuk desain custum",
     ],
 
-    benefits: ["Praktis digunakan", "Mudah dipindahkan", "Cocok untuk event"],
+    benefits: [
+      "Hasil cetak warna tajam",
+      "X Banner praktis dan mudah dipasang",
+      "Mudah dipindah pindah",
+      "Cocok untuk Event",
+    ],
+  },
+
+  {
+    slug: "roll-banner",
+    category: "Indoor",
+    badge: "Custom Print",
+    title: "Roll Banner",
+    price: "Mulai Rp150.000",
+    image: rollBanner,
+  
+    detail: {
+      ukuran: "60 x 160 cm",
+      bahan: "Albartos Premium",
+      waktu: "1 hari pengerjaan *",
+    },
+  
+    specifications: [
+      "Menggunakan sistem roll up aluminium",
+      "Banner mudah dipasang dan dilepas",
+      "Cocok untuk kebutuhan promosi indoor",
+      "Desain dapat custom sesuai kebutuhan",
+      "Tidak termasuk biaya kirim",
+      "Terima desain siap cetak jpg/cdr",
+    ],
+  
+    benefits: [
+      "praktis dan mudah dibawa",
+      "tampilan lebih profesional dan elegan",
+      "cocok untuk event, pameran, dan branding usaha",
+      "hasil cetak warna tajam dan berkualitas",
+    ],
   },
 
   {
