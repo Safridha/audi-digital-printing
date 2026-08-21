@@ -27,57 +27,55 @@ const portfolioVideos = [
 
 export default function Portfolio(){
 
-  const [imageOpen,setImageOpen] = useState(false);
-  const [videoOpen,setVideoOpen] = useState(false);
+const [imageOpen,setImageOpen] = useState(false);
+const [videoOpen,setVideoOpen] = useState(false);
 
-  const [activeImage,setActiveImage] = useState(0);
-  const [activeVideo,setActiveVideo] = useState(0);
-
-
-
-  useEffect(()=>{
-
-    const handleEscape = (e:KeyboardEvent)=>{
-
-      if(e.key==="Escape"){
-        setImageOpen(false);
-        setVideoOpen(false);
-      }
-
-    };
-
-
-    window.addEventListener(
-      "keydown",
-      handleEscape
-    );
-
-
-    document.body.style.overflow =
-      imageOpen || videoOpen
-      ? "hidden"
-      : "auto";
-
-
-    return()=>{
-
-      window.removeEventListener(
-        "keydown",
-        handleEscape
-      );
-
-      document.body.style.overflow="auto";
-
-    };
-
-
-  },[imageOpen,videoOpen]);
+const [activeImage,setActiveImage] = useState(0);
+const [activeVideo,setActiveVideo] = useState(0);
 
 
 
+useEffect(()=>{
+
+const close = (e:KeyboardEvent)=>{
+
+if(e.key==="Escape"){
+setImageOpen(false);
+setVideoOpen(false);
+}
+
+};
 
 
-  return (
+window.addEventListener(
+"keydown",
+close
+);
+
+
+document.body.style.overflow =
+imageOpen || videoOpen
+? "hidden"
+: "auto";
+
+
+return()=>{
+
+window.removeEventListener(
+"keydown",
+close
+);
+
+document.body.style.overflow="auto";
+
+};
+
+
+},[imageOpen,videoOpen]);
+
+
+
+return(
 
 <section
 id="portfolio"
@@ -94,7 +92,7 @@ mx-auto max-w-7xl px-5 sm:px-6
 ">
 
 
-{/* HEADER */}
+{/* TITLE */}
 
 <div className="
 mb-6 text-center
@@ -106,9 +104,7 @@ text-2xl font-extrabold text-slate-900 md:text-4xl
 
 Portfolio
 
-<span className="
-text-blue-600
-">
+<span className="text-blue-600">
 {" "}2Audi Digital
 </span>
 
@@ -116,10 +112,11 @@ text-blue-600
 
 
 <p className="
-mt-2 text-xs text-slate-600 sm:text-sm
+mt-2 text-sm text-slate-600
 ">
 Lihat hasil cetak dan proses produksi kami.
 </p>
+
 
 </div>
 
@@ -134,50 +131,40 @@ mx-auto grid max-w-5xl grid-cols-2 gap-4
 ">
 
 
-{/* FOTO */}
 
+{/* FOTO */}
 
 <motion.button
 
-whileTap={{
-scale:.97
-}}
+whileTap={{scale:.97}}
 
 onClick={()=>{
-
 setActiveImage(0);
 setImageOpen(true);
-
 }}
 
 className="
-overflow-hidden rounded-2xl bg-white shadow-md
+overflow-hidden rounded-2xl
+bg-white shadow-md
 hover:shadow-xl transition
 "
 
 >
 
 
-<div className="
-aspect-video overflow-hidden bg-slate-100
-">
-
-
 <img
 
 src={spanduk}
 
-alt="portfolio"
-
 className="
-h-full w-full object-contain
+aspect-video
+h-full
+w-full
+object-contain
+bg-slate-100
 "
 
 />
-
-
-</div>
-
 
 
 <div className="
@@ -185,11 +172,9 @@ p-3 text-center
 ">
 
 <p className="
-text-xs font-bold text-slate-900
+text-xs font-bold
 ">
-
 KLIK UNTUK LIHAT HASIL CETAK
-
 </p>
 
 </div>
@@ -201,15 +186,12 @@ KLIK UNTUK LIHAT HASIL CETAK
 
 
 
-
 {/* VIDEO */}
 
 
 <motion.button
 
-whileTap={{
-scale:.97
-}}
+whileTap={{scale:.97}}
 
 onClick={()=>{
 
@@ -219,7 +201,8 @@ setVideoOpen(true);
 }}
 
 className="
-overflow-hidden rounded-2xl bg-white shadow-md
+overflow-hidden rounded-2xl
+bg-white shadow-md
 hover:shadow-xl transition
 "
 
@@ -227,7 +210,7 @@ hover:shadow-xl transition
 
 
 <div className="
-relative aspect-video overflow-hidden bg-black
+relative aspect-video bg-black
 ">
 
 
@@ -245,14 +228,19 @@ h-full w-full object-cover
 
 
 <div className="
-absolute inset-0 flex items-center justify-center bg-black/30
+absolute inset-0 flex items-center justify-center
+bg-black/30
 ">
 
+
 <span className="
-flex h-12 w-12 items-center justify-center
-rounded-full bg-white font-bold
+rounded-full bg-white
+px-4 py-3
+font-bold
 ">
+
 ▶
+
 </span>
 
 
@@ -262,55 +250,52 @@ rounded-full bg-white font-bold
 </div>
 
 
+
 <div className="
 p-3 text-center
 ">
 
 <p className="
-text-xs font-bold text-slate-900
+text-xs font-bold
 ">
-
 KLIK UNTUK LIHAT PROSES PRODUKSI
-
 </p>
 
-
 </div>
+
 
 
 </motion.button>
 
 
-</div>
-
 
 </div>
 
 
+</div>
 
 
 
 
-{/* IMAGE POPUP */}
+
+
+
+{/* IMAGE MODAL */}
+
 
 <AnimatePresence>
 
 {
+
 imageOpen && (
 
 <motion.div
 
-initial={{
-opacity:0
-}}
+initial={{opacity:0}}
 
-animate={{
-opacity:1
-}}
+animate={{opacity:1}}
 
-exit={{
-opacity:0
-}}
+exit={{opacity:0}}
 
 onClick={()=>setImageOpen(false)}
 
@@ -319,49 +304,37 @@ fixed inset-0 z-[999]
 flex items-center justify-center
 bg-black/80
 backdrop-blur-sm
-p-6
-pt-24
+p-4
 "
 
 >
 
-
-{/* CLOSE BUTTON */}
 
 <button
 
 onClick={()=>setImageOpen(false)}
 
 className="
-fixed
-right-6
-top-24
-z-[9999]
-flex
-h-10
-w-10
-items-center
-justify-center
+absolute
+right-5
+top-20
+z-[1000]
+h-10 w-10
 rounded-full
 bg-white/30
 text-xl
 font-bold
 text-white
-backdrop-blur-md
-transition
-hover:bg-white/50
 "
 
 >
+
 ✕
 
 </button>
 
 
 
-
-
-{/* IMAGE AREA */}
 
 <div
 
@@ -370,7 +343,6 @@ onClick={(e)=>e.stopPropagation()}
 className="
 relative
 flex
-w-full
 max-w-4xl
 items-center
 justify-center
@@ -379,180 +351,10 @@ justify-center
 >
 
 
-{/* PREVIOUS */}
-
 <button
 
 onClick={()=>setActiveImage(
-activeImage === 0
-?
-portfolioImages.length - 1
-:
-activeImage - 1
-)}
-
-className="
-absolute
-left-3
-z-20
-flex
-h-11
-w-11
-items-center
-justify-center
-rounded-full
-bg-white/20
-text-3xl
-text-white
-backdrop-blur-md
-hover:bg-white/40
-"
-
->
-‹
-</button>
-
-
-
-
-
-<img
-
-src={portfolioImages[activeImage]}
-
-alt="portfolio"
-
-className="
-max-h-[65vh]
-max-w-[90vw]
-rounded-2xl
-object-contain
-shadow-2xl
-"
-
-/>
-
-
-
-
-
-{/* NEXT */}
-
-<button
-
-onClick={()=>setActiveImage(
-activeImage === portfolioImages.length - 1
-?
-0
-:
-activeImage + 1
-)}
-
-className="
-absolute
-right-3
-z-20
-flex
-h-11
-w-11
-items-center
-justify-center
-rounded-full
-bg-white/20
-text-3xl
-text-white
-backdrop-blur-md
-hover:bg-white/40
-"
-
->
-›
-</button>
-
-
-
-</div>
-
-
-
-
-{/* INFO */}
-
-<div
-
-className="
-fixed
-bottom-8
-left-1/2
--translate-x-1/2
-rounded-full
-bg-white/20
-px-4
-py-2
-text-xs
-text-white
-backdrop-blur-md
-"
-
->
-← Geser / gunakan tombol →
-</div>
-
-
-
-</motion.div>
-
-)
-
-}
-
-</AnimatePresence>
-
-
-{/* CLOSE */}
-
-<button
-
-onClick={()=>setImageOpen(false)}
-
-className="
-absolute right-5 top-5
-z-50
-flex h-10 w-10 items-center justify-center
-rounded-full
-bg-white/20
-text-xl font-bold text-white
-"
-
->
-
-✕
-
-</button>
-
-
-
-
-
-<div
-
-onClick={(e)=>e.stopPropagation()}
-
-className="
-relative flex w-full max-w-5xl
-items-center justify-center
-"
-
->
-
-
-
-{/* PREV */}
-
-<button
-
-onClick={()=>setActiveImage(
-activeImage === 0
+activeImage===0
 ?
 portfolioImages.length-1
 :
@@ -560,12 +362,12 @@ activeImage-1
 )}
 
 className="
-absolute left-3 z-20
-flex h-12 w-12 items-center justify-center
+absolute left-2
 rounded-full
 bg-white/20
-text-3xl text-white
-backdrop-blur-md
+px-4 py-2
+text-3xl
+text-white
 "
 
 >
@@ -576,35 +378,25 @@ backdrop-blur-md
 
 
 
-
-
-
 <img
 
 src={portfolioImages[activeImage]}
 
-alt="portfolio"
-
 className="
-max-h-[80vh]
-max-w-full
+max-h-[70vh]
+max-w-[85vw]
 rounded-2xl
 object-contain
-shadow-2xl
 "
 
 />
 
 
 
-
-
-{/* NEXT */}
-
 <button
 
 onClick={()=>setActiveImage(
-activeImage === portfolioImages.length-1
+activeImage===portfolioImages.length-1
 ?
 0
 :
@@ -612,12 +404,12 @@ activeImage+1
 )}
 
 className="
-absolute right-3 z-20
-flex h-12 w-12 items-center justify-center
+absolute right-2
 rounded-full
 bg-white/20
-text-3xl text-white
-backdrop-blur-md
+px-4 py-2
+text-3xl
+text-white
 "
 
 >
@@ -627,13 +419,11 @@ backdrop-blur-md
 </button>
 
 
-
 </div>
 
 
 
 </motion.div>
-
 
 )
 
@@ -647,7 +437,7 @@ backdrop-blur-md
 
 
 
-{/* VIDEO POPUP */}
+{/* VIDEO MODAL */}
 
 
 <AnimatePresence>
@@ -656,27 +446,20 @@ backdrop-blur-md
 
 videoOpen && (
 
-
 <motion.div
 
-initial={{
-opacity:0
-}}
+initial={{opacity:0}}
 
-animate={{
-opacity:1
-}}
+animate={{opacity:1}}
 
-exit={{
-opacity:0
-}}
+exit={{opacity:0}}
 
 onClick={()=>setVideoOpen(false)}
 
 className="
-fixed inset-0 z-[100]
+fixed inset-0 z-[999]
 flex items-center justify-center
-bg-black/80 backdrop-blur-sm
+bg-black/80
 p-4
 "
 
@@ -688,12 +471,13 @@ p-4
 onClick={()=>setVideoOpen(false)}
 
 className="
-absolute right-5 top-5
-z-50
-flex h-10 w-10 items-center justify-center
+absolute
+right-5 top-20
+h-10 w-10
 rounded-full
-bg-white/20
-text-xl text-white
+bg-white/30
+text-white
+text-xl
 "
 
 >
@@ -704,17 +488,11 @@ text-xl text-white
 
 
 
-
 <div
 
 onClick={(e)=>e.stopPropagation()}
 
-className="
-relative w-full max-w-4xl
-"
-
 >
-
 
 <video
 
@@ -723,18 +501,16 @@ src={portfolioVideos[activeVideo]}
 controls
 
 className="
-max-h-[80vh]
-w-full
-rounded-2xl
-object-contain
+max-h-[75vh]
+max-w-[90vw]
+rounded-xl
 "
 
 />
 
 
-
 <div className="
-mt-4 flex justify-center gap-4
+mt-4 flex justify-center gap-5
 ">
 
 
@@ -779,7 +555,6 @@ px-5 py-2 text-white
 </button>
 
 
-
 </div>
 
 
@@ -789,7 +564,6 @@ px-5 py-2 text-white
 
 </motion.div>
 
-
 )
 
 }
@@ -798,8 +572,9 @@ px-5 py-2 text-white
 
 
 
+
 </section>
 
-  );
+);
 
 }
